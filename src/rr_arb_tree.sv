@@ -113,11 +113,9 @@ module rr_arb_tree #(
 
           logic [NumIn-1:0] req_tmp;
           assign req_tmp = req_q & req_i;
-	  `ifndef _VCP // PAK2568
           lock_req: assert property(
             @(posedge clk_i) disable iff (!rst_ni) LockIn |-> lock_d |=> req_tmp == req_q)
               else $fatal (1, "It is disallowed to deassert unserved request signals when LockIn is enabled.");
-        `endif
         `endif
         // pragma translate_on
 

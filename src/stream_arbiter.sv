@@ -37,13 +37,7 @@ module stream_arbiter #(
   ) i_arb (
     .clk_i        (clk_i),
     .rst_ni       (rst_ni),
-`ifdef _VCP // PAK2591
-    .flush_i      (ariane_pkg::ALDEC_1B0),
-
-`else
     .flush_i      (1'b0),
-
-`endif
     .inp_data_i   (inp_data_i),
     .inp_valid_i  (inp_valid_i),
     .inp_ready_o  (inp_ready_o),
